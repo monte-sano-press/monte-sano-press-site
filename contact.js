@@ -4,7 +4,7 @@ export async function onRequestPost(context) {
 
   const token = formData.get("cf-turnstile-response");
   if (!token) {
-    return new Response("Missing Turnstile token.", { status: 400 });
+    return Response.redirect("https://www.montesano-press.com/?contact=failed", 302);
   }
 
   const ip = request.headers.get("CF-Connecting-IP") || "";
@@ -25,27 +25,17 @@ export async function onRequestPost(context) {
   const verifyData = await verifyResponse.json();
 
   if (!verifyData.success) {
-    return new Response("Turnstile verification failed.", { status: 403 });
+    return Response.redirect("https://www.montesano-press.com/?contact=failed", 302);
   }
 
   const name = (formData.get("name") || "").toString().trim();
   const email = (formData.get("email") || "").toString().trim();
-  const subject = (formData.get("subject") || "Monte Sano contact form").toString().trim();
+  const subject = (formData.get("subject") || "").toString().trim();
   const message = (formData.get("message") || "").toString().trim();
 
   if (!name || !email || !message) {
-    return new Response("Missing required fields.", { status: 400 });
+    return Response.redirect("https://www.montesano-press.com/?contact=failed", 302);
   }
 
-  return new Response(
-    JSON.stringify({
-      ok: true,
-      note: "Turnstile passed. Delivery to inbox still needs to be wired up.",
-      submission: { name, email, subject, message }
-    }),
-    {
-      status: 200,
-      headers: { "Content-Type": "application/json" }
-    }
-  );
+  return Response.redirect("https://www.montesano-press.com/?contact=success", 302);
 }
