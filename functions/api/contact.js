@@ -64,11 +64,10 @@ export async function onRequestPost(context) {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-  fromAddress: env.CONTACT_FROM_EMAIL,
-  toAddress: env.CONTACT_TO_EMAIL,
-  subject: `Monte Sano Press: ${subject || "General inquiry"}`,
-  content:
-`New Monte Sano Press contact form submission
+          fromAddress: env.CONTACT_FROM_EMAIL,
+          toAddress: env.CONTACT_TO_EMAIL,
+          subject: `Monte Sano Press: ${subject || "General inquiry"}`,
+          content: `New Monte Sano Press contact form submission
 
 Reply email: ${email}
 
@@ -77,8 +76,10 @@ Subject: ${subject}
 
 Message:
 ${message}`,
-  mailFormat: "plaintext"
-}),
+          mailFormat: "plaintext",
+        }),
+      }
+    );
 
     const text = await sendResp.text();
 
@@ -91,7 +92,7 @@ ${message}`,
     console.error("CONTACT FORM ERROR:", err);
     return new Response(`FAILED: ${err?.message || err}`, {
       status: 500,
-      headers: { "Content-Type": "text/plain" }
+      headers: { "Content-Type": "text/plain" },
     });
   }
 }
