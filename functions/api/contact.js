@@ -109,7 +109,10 @@ ${message}
 
     return Response.redirect("https://www.montesano-press.com/?contact=success", 302);
   } catch (err) {
-    console.error(err);
-    return Response.redirect("https://www.montesano-press.com/?contact=failed", 302);
-  }
+  console.error("CONTACT FORM ERROR:", err);
+  return new Response(
+    `Contact form failed:\n${err?.message || err}`,
+    { status: 500, headers: { "Content-Type": "text/plain" } }
+  );
+}
 }
