@@ -523,15 +523,18 @@
           <h3>Get in touch</h3>
           <p>Use the form below for business inquiries, rights questions, or general correspondence.</p>
 
-          <form action="https://www.montesano-press.com/api/contact" method="POST">
-            <input type="text" name="name" placeholder="Your name" required>
-            <input type="email" name="email" placeholder="Your email" required>
-            <input type="text" name="subject" placeholder="Subject" required>
-            <textarea name="message" placeholder="Message" required></textarea>
+          <form class="contact-form" action="https://formsubmit.co/YOUR_MONTE_SANO_TOKEN" method="POST">
+  <input type="text" name="name" placeholder="Your name" required>
+  <input type="email" name="email" placeholder="Your email" required>
+  <input type="text" name="subject" placeholder="Subject" required>
+  <textarea name="message" placeholder="Message" required></textarea>
 
-            <div class="cf-turnstile" data-sitekey="0x4AAAAAAC-o_tMwUM-b5ceL"></div>
-            <button type="submit" class="btn btn-primary" onclick="gtag('event','submit_contact_form');">Send Message</button>
-          </form>
+  <input type="text" name="_honey" style="display:none">
+  <input type="hidden" name="_next" value="https://www.montesano-press.com/">
+  <input type="hidden" name="_subject" value="New message from Monte Sano Press website">
+
+  <button type="submit" class="btn btn-primary" onclick="gtag('event','submit_contact_form');">Send Message</button>
+</form>
 
           </div>
       </div>
