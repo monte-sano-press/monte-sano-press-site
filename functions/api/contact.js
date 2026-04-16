@@ -10,9 +10,17 @@ async function getZohoAccessToken(env) {
     }),
   });
 
-  if (!resp.ok) throw new Error("Token refresh failed");
+  if (!resp.ok) {
+    const text = await resp.text();
+    throw new Error(`Token refresh failed: ${resp.status} ${text}`);
+  }
 
   const data = await resp.json();
+
+  if (!data.access_token) {
+    throw new Error("Token refresh returned no access token");
+  }
+
   return data.access_token;
 }
 
@@ -47,7 +55,7 @@ export async function onRequestPost(context) {
   try {
     const accessToken = await getZohoAccessToken(env);
 
-    await fetch(
+    const sendResp = await fetch(
       `https://mail.zoho.com/api/accounts/${env.ZOHO_ACCOUNT_ID}/messages`,
       {
         method: "POST",
@@ -74,8 +82,18 @@ ${message}`,
       }
     );
 
+    const text = await sendResp.text();
+
+    if (!sendResp.ok) {
+      throw new Error(`Zoho send failed: ${sendResp.status} ${text}`);
+    }
+
     return Response.redirect("https://www.montesano-press.com/?contact=success", 302);
-  } catch {
-    return Response.redirect("https://www.montesano-press.com/?contact=failed", 302);
+  } catch (err) {
+    console.error("CONTACT FORM ERROR:", err);
+    return new Response(`FAILED: ${err?.message || err}`, {
+      status: 500,
+      headers: { "Content-Type": "text/plain" }
+    });
   }
 }
