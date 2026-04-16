@@ -523,7 +523,7 @@
           <h3>Get in touch</h3>
           <p>Use the form below for business inquiries, rights questions, or general correspondence.</p>
 
-          <form class="contact-form" action="https://formsubmit.co/eda7c07aca5359a9945eaeca9f157cb8" method="POST">
+          <form action="/api/contact" method="POST">
             <input type="text" name="name" placeholder="Your name" required>
             <input type="email" name="email" placeholder="Your email" required>
             <input type="text" name="subject" placeholder="Subject" required>
@@ -532,7 +532,7 @@
             <input type="text" name="_honey" style="display:none">
             <input type="hidden" name="_subject" value="New message from Monte Sano Press website">
             <input type="hidden" name="_next" value="https://www.montesano-press.com/">
-
+            <div class="cf-turnstile" data-sitekey="YOUR_SITE_KEY"></div>
             <button type="submit" class="btn btn-primary" onclick="gtag('event','submit_contact_form');">Send Message</button>
           </form>
 
@@ -547,5 +547,6 @@
       <img src="monte-sano-press-web-dark.png" alt="Monte Sano Press logo" class="footer-logo">
     </div>
   </footer>
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 </body>
 </html>
