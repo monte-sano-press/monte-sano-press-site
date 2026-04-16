@@ -64,23 +64,21 @@ export async function onRequestPost(context) {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          fromAddress: env.CONTACT_FROM_EMAIL,
-          toAddress: env.CONTACT_TO_EMAIL,
-          subject: `Monte Sano Press: ${subject || "General inquiry"}`,
-          content:
+  fromAddress: env.CONTACT_FROM_EMAIL,
+  toAddress: env.CONTACT_TO_EMAIL,
+  subject: `Monte Sano Press: ${subject || "General inquiry"}`,
+  content:
 `New Monte Sano Press contact form submission
 
+Reply email: ${email}
+
 Name: ${name}
-Email: ${email}
 Subject: ${subject}
 
 Message:
 ${message}`,
-          mailFormat: "plaintext",
-          replyTo: email,
-        }),
-      }
-    );
+  mailFormat: "plaintext"
+}),
 
     const text = await sendResp.text();
 
