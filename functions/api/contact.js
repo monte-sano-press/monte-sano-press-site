@@ -108,8 +108,11 @@ ${message}
     }
 
     return Response.redirect("https://www.montesano-press.com/?contact=success", 302);
-  } return new Response("DEBUG VERSION 12345", {
-  status: 500,
-  headers: { "Content-Type": "text/plain" }
-});
+  } catch (err) {
+    console.error("CONTACT FORM ERROR:", err);
+    return new Response("DEBUG VERSION 12345", {
+      status: 500,
+      headers: { "Content-Type": "text/plain" }
+    });
+  }
 }
