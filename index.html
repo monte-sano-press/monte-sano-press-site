@@ -260,6 +260,94 @@
 
     .stat-box p{font-size:.95rem}
 
+    .featured-book{
+  display:grid;
+  grid-template-columns:280px 1fr;
+  gap:2rem;
+  align-items:center;
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:28px;
+  padding:2rem;
+  box-shadow:var(--shadow);
+}
+
+.featured-cover img{
+  width:100%;
+  border-radius:18px;
+  box-shadow:0 18px 45px rgba(0,0,0,.35);
+}
+
+.featured-copy h3{
+  font-size:2.35rem;
+  margin-bottom:.9rem;
+}
+
+.featured-copy p{
+  margin:0 0 1rem;
+  color:var(--muted);
+}
+
+.featured-copy p:last-child{
+  margin-bottom:0;
+}
+
+.title-meta{
+  display:grid;
+  grid-template-columns:repeat(2, minmax(160px,1fr));
+  gap:1rem;
+  margin:1.4rem 0;
+}
+
+.title-meta-box{
+  border:1px solid var(--border);
+  border-radius:18px;
+  padding:1rem;
+  background:var(--surface-soft);
+}
+
+.title-meta-box h4{
+  font-family:'Inter',sans-serif;
+  font-size:.72rem;
+  text-transform:uppercase;
+  letter-spacing:.16em;
+  color:var(--accent);
+  margin:0 0 .35rem;
+}
+
+.title-meta-box p{
+  margin:0;
+  color:var(--text);
+  font-size:.95rem;
+}
+
+.forthcoming-mini{
+  margin-top:1.5rem;
+  display:grid;
+  grid-template-columns:120px 1fr;
+  gap:1.25rem;
+  align-items:center;
+  background:rgba(255,255,255,.025);
+  border:1px solid var(--border);
+  border-radius:22px;
+  padding:1rem;
+}
+
+.forthcoming-mini img{
+  width:100%;
+  border-radius:12px;
+}
+
+.forthcoming-mini h3{
+  font-size:1.65rem;
+  margin-bottom:.4rem;
+}
+
+.forthcoming-mini p{
+  margin:0;
+  color:var(--muted);
+}
+    
     .imprint-grid{
       display:grid;
       grid-template-columns:repeat(2, minmax(280px,1fr));
@@ -387,6 +475,18 @@
       .imprint-grid{
         grid-template-columns:1fr;
       }
+      .featured-book{
+  grid-template-columns:1fr;
+}
+
+.featured-cover{
+  max-width:300px;
+  margin:0 auto;
+}
+
+.title-meta{
+  grid-template-columns:1fr;
+}
     }
 
     @media (max-width: 700px){
@@ -397,6 +497,14 @@
         justify-content:center;
       }
 
+      .featured-book{
+  padding:1.4rem;
+}
+
+.forthcoming-mini{
+  grid-template-columns:90px 1fr;
+}
+      
       .brand{
         flex-direction:column;
         gap:.5rem;
@@ -486,7 +594,70 @@
         </div>
       </div>
     </section>
+        <section id="books">
+      <div class="container">
+        <div class="section-heading">
+          <h2>Forthcoming Titles</h2>
+          <p>Books published by Monte Sano Press.</p>
+        </div>
 
+        <div class="featured-book">
+          <div class="featured-cover">
+            <img src="becoming_cover_website.png" alt="Becoming by A.J. Beckett book cover">
+          </div>
+
+          <div class="featured-copy">
+            <p class="eyebrow">Forthcoming Release</p>
+            <h3><em>Becoming</em></h3>
+
+            <p>
+              <em>Becoming</em> by A.J. Beckett is book one in the Harlow series, a 1996 college slow-burn romance set at fictional Harlow University.
+            </p>
+
+            <p>
+              Published by Monte Sano Press, <em>Becoming</em> is scheduled for release on September 18, with preorders opening July 6.
+            </p>
+
+            <div class="title-meta">
+              <div class="title-meta-box">
+                <h4>Author</h4>
+                <p>A.J. Beckett</p>
+              </div>
+
+              <div class="title-meta-box">
+                <h4>Series</h4>
+                <p>The Harlow Series, Book One</p>
+              </div>
+
+              <div class="title-meta-box">
+                <h4>Preorders</h4>
+                <p>Open July 6</p>
+              </div>
+
+              <div class="title-meta-box">
+                <h4>Release Date</h4>
+                <p>September 18</p>
+              </div>
+            </div>
+
+            <div class="imprint-actions">
+              <a href="https://www.ajbeckettwrites.com" target="_blank" rel="noopener noreferrer" class="btn btn-primary" onclick="gtag('event','click_becoming_author_site');">Author Site</a>
+              <a href="#contact" class="btn btn-soft" onclick="gtag('event','click_becoming_msp_contact');">Publishing Contact</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="forthcoming-mini">
+          <img src="rebuilding_cover_website.png" alt="Rebuilding by A.J. Beckett book cover">
+          <div>
+            <p class="eyebrow">In Development</p>
+            <h3><em>Rebuilding</em></h3>
+            <p>Book two in the Harlow series by A.J. Beckett.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    
     <section id="authors">
       <div class="container">
         <div class="section-heading">
