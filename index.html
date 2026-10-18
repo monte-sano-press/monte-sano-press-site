@@ -179,30 +179,34 @@
     }
     .nav-links a:hover{color:var(--accent)}
 
-    .hero{
-      position:relative;
-      overflow:hidden;
-      border-bottom:1px solid var(--border);
-      padding:4.5rem 0 3.75rem;
+    .hero {
+        position: relative;
+        overflow: hidden;
+        border-bottom: 1px solid var(--border);
+        background:
+            linear-gradient(rgba(13,11,9,.56), rgba(13,11,9,.36)),
+            url('msp-hero.jpg');
+        background-size: cover;
+        background-position: center center;
     }
 
-    .hero::before{
-      content:"";
-      position:absolute;
-      inset:0;
-      background:
-        linear-gradient(180deg, rgba(0,0,0,.22), rgba(0,0,0,.5)),
-        radial-gradient(circle at top right, rgba(213,178,113,.12), transparent 34%);
-      pointer-events:none;
+    .hero::after {
+        content: "";
+        position: absolute;
+        inset: auto 0 0 0;
+        height: 120px;
+        background: linear-gradient(to bottom, rgba(13,11,9,0), var(--bg));
+        pointer-events: none;
     }
 
-    .hero-inner{
-      position:relative;
-      z-index:1;
-      display:grid;
-      grid-template-columns:1.1fr .9fr;
-      gap:2.5rem;
-      align-items:center;
+    .hero-inner {
+        position: relative;
+        z-index: 1;
+        padding: 8rem 0 6rem;
+    }
+
+    .hero-copy {
+        max-width: 680px;
     }
 
     h1,h2,h3,h4{
@@ -622,9 +626,6 @@
           <a href="#authors" class="btn btn-primary" onclick="gtag('event','click_hero_authors');">Explore Authors</a>
           <a href="#contact" class="btn btn-soft" onclick="gtag('event','click_hero_contact');">Contact</a>
         </div>
-      </div>
-      <div class="hero-art">
-        <img src="" alt="A.J. Beckett and James Tolliver brand marks">
       </div>
     </div>
   </header>
